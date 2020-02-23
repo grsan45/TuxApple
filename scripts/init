@@ -1,0 +1,9 @@
+#!/bin/busybox sh
+
+busybox mount -t proc none /proc
+busybox mount -t sysfs none /sys
+
+echo "TuxApple : Uptime:"
+busybox uptime
+
+busybox sh
