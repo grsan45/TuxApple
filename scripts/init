@@ -3,7 +3,26 @@
 busybox mount -t proc none /proc
 busybox mount -t sysfs none /sys
 
-echo "TuxApple : Uptime:"
-busybox uptime
+busybox cat <<!
+	                                                     
+	  ______           ___                __    
+	 /_  __/_  ___  __/   |  ____  ____  / /__  
+	  / / / / / / |/_/ /| | / __ \/ __ \/ / _ \ 
+	 / / / /_/ />  </ ___ |/ /_/ / /_/ / /  __/ 
+	/_/  \__,_/_/|_/_/  |_/ .___/ .___/_/\___/  
+	                     /_/   /_/                                                                                               
+                                                                                         
 
-busybox sh
+	Boot Time: $(busybox cut -d' ' -f1 /proc/uptime) seconds
+	
+	Run 'help' to see shell commands
+	Run 'busybox' to see busybox modules
+	Run busybox modules using 'busybox <module>'
+
+	This runs in RAM, so you are safe to modify files.
+
+!
+
+#Running this in RAM only, not installing to flash
+
+exec busybox sh
